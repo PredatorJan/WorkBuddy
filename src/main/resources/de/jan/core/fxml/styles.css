@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "Mona Sans";
+    src: url("../fonts/MonaSans-Bold.ttf");
+}
+
+.label {
+    -fx-padding: 2 5 2 5;
+    -fx-background-color: lightgrey;
+    -fx-font-family: "Mona Sans";
+}
+
+#counter {
+    -fx-border-width: 1;
+    -fx-border-color: black;
+}
+
+#details {
+    -fx-padding: 0 5 0 5;
+}
+
+#exit {
+    -fx-padding: 2 5 2 5;
+    -fx-background-color: lightgrey;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

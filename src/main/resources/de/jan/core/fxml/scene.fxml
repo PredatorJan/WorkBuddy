@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+
+<VBox spacing="5" alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.jan.fx.FXMLController">
+    <children>
+        <ImageView fx:id="petImage" fitWidth="100" fitHeight="100" preserveRatio="true">
+            <image>
+                <Image url="@../images/pet.png"/>
+            </image>
+        </ImageView>
+        <HBox fx:id="details" spacing="4" alignment="center">
+            <Label fx:id="counter" text="Label" HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+            <Button fx:id="exit" text="✖"/>
+        </HBox>
+    </children>
+</VBox>

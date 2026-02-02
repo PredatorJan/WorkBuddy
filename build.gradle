@@ -1,0 +1,62 @@
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+group = 'de.jan'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.openjfx:javafx:21'
+}
+
+javafx {
+    version = "21"
+    modules = ['javafx.controls', 'javafx.fxml']
+}
+
+application {
+    mainClass = 'de.jan.Launcher'
+}
+
+jar {
+    from("natives/x64") {
+        into "natives/x64"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes(
+                'Main-Class': "de.jan.Launcher"
+        )
+    }
+}
+
+tasks.register("buildDist", Copy) {
+    group "build"
+    dependsOn(jar)
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from layout.buildDirectory.dir("libs")
+    into layout.buildDirectory.dir("workBuddy")
+
+    from("bat")
+    into layout.buildDirectory.dir("workBuddy")
+
+    from("natives/x64")
+    into layout.buildDirectory.dir("workBuddy")
+}
+
+run {
+    jvmArgs = ["-Djava.library.path=natives/x64", "--enable-native-access=javafx.graphics,ALL-UNNAMED"]
+}
